@@ -28,7 +28,7 @@ export const createJob = createAsyncThunk(
                     }`
                 }
             });
-            thunkAPI.dispatch(clearValues);
+            thunkAPI.dispatch(clearValues());
             return resp.data;
         } catch (error) {
             if (error.response.status === 401) {
@@ -48,7 +48,10 @@ const jobSlice = createSlice({
             state[name] = value;
         },
         clearValues: () => {
-            return initialState;
+            return {
+                ...initialState,
+                jobLocation: getUserFromLocalStorage()?.location || ""
+            };
         }
     },
     extraReducers: {
