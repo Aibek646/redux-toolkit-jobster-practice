@@ -3177,7 +3177,7 @@ export const getAllJobs = createAsyncThunk(
     const { page, search, searchStatus, searchType, sort } =
       thunkAPI.getState().allJobs;
 
-    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+    let url = `/job?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
     if (search) {
       url = url + `&search=${search}`;
     }
